@@ -12,6 +12,7 @@ import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;
+import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.LivingEntity;
@@ -116,6 +117,9 @@ public class WandListener implements Listener {
 												break;
 											case EXTINGUISH:
 												p.setFireTicks(0);
+												break;
+											case ENDER_HAND:
+												p.launchProjectile(EnderPearl.class);
 												break;
 											default:
 												break;

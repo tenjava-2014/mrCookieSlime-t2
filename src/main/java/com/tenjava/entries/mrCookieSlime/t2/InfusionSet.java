@@ -10,6 +10,7 @@ public enum InfusionSet {
 	ICEBALL,
 	CANNON, 
 	EXTINGUISH,
+	ENDER_HAND,
 	SHURIKEN;
 	
 	public boolean isContainedin(List<Infusion> list) {
@@ -46,6 +47,11 @@ public enum InfusionSet {
 			list.add(Infusion.FIRE);
 			list.add(Infusion.AIR);
 			list.add(Infusion.WATER);
+			break;
+		case ENDER_HAND:
+			list.add(Infusion.FLUX);
+			list.add(Infusion.METAL);
+			list.add(Infusion.AIR);
 			break;
 		default:
 			break;
