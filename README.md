@@ -42,7 +42,10 @@ Usage
 -----
 
 1. Install plugin
-2. Do things with it
+2. Find a Meteor
+3. Obtain the powerful Items inside the Meteor's chest
+4. Experiment with the unearthly Energy inside of Meteor Chunks by putting them inside of a Wand
+5. Have fun using your Wand for all kinds of cool things
 
 <!-- Hi, mrCookieSlime! This is the default README for every ten.java submission. -->
 <!-- We encourage you to edit this README with some information about your submission – keep in mind you'll be scored on documentation! -->
