@@ -193,6 +193,7 @@ public class WandListener implements Listener {
 				e.getPlayer().getWorld().playEffect(e.getPlayer().getLocation(), Effect.ENDER_SIGNAL, 1);
 				e.getPlayer().getWorld().playEffect(e.getPlayer().getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
 				e.getPlayer().getWorld().playSound(e.getPlayer().getLocation(), Sound.LEVEL_UP, 1, 1);
+				p.sendMessage(plugin.getTranslation("wand.success"));
 			}
 			
 			opening.remove(e.getPlayer().getUniqueId());

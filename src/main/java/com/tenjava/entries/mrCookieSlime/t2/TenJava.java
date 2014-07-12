@@ -66,8 +66,8 @@ public class TenJava extends JavaPlugin {
 		
 		try {
 			setupLocalizations(
-					new String[] {"fail.wrongItems", "fail.no-combination", "command.usage"}, 
-					new String[] {"&4Your Wand did not accept your Items and exterminated these", "&cLooks like your Infusions dont combine with each other", "&4&lUsage: /is-debug <meteor/items>"}
+					new String[] {"fail.wrongItems", "fail.no-combination", "command.usage", "wand.success"}, 
+					new String[] {"&4Your Wand did not accept your Items and exterminated these", "&cLooks like your Infusions dont combine with each other", "&4&lUsage: /is-debug <meteor/items>", "&a&lMagical Energy flows through the Crystals inside of your Wand..."}
 			);
 		} catch (IOException e) {
 		}
