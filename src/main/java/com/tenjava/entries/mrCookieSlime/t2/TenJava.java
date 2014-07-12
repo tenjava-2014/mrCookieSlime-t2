@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.Chest;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -259,7 +260,12 @@ public class TenJava extends JavaPlugin {
 				block = l.getWorld().spawnFallingBlock(l, Material.NETHERRACK, (byte) 0);
 			}
 			block.setVelocity(new Vector(this.getRandomizer().nextInt(2) - this.getRandomizer().nextInt(4), 0, this.getRandomizer().nextInt(2) - this.getRandomizer().nextInt(4)).multiply(0.6));
-			if (this.getRandomizer().nextFloat() <=  0.99) l.getBlock().setType(Material.NETHERRACK);
+			if (this.getRandomizer().nextFloat() <=  0.99) {
+				l.getBlock().setType(Material.NETHERRACK);
+				if (l.getBlock().getRelative(BlockFace.UP).getType() != Material.NETHERRACK || l.getBlock().getRelative(BlockFace.UP).getType() != Material.QUARTZ_ORE) {
+					l.getBlock().getRelative(BlockFace.UP).setType(Material.FIRE);
+				}
+			}
 		}
 		
 		base.getBlock().setType(Material.CHEST);
