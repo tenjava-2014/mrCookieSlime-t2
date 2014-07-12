@@ -220,7 +220,7 @@ public class TenJava extends JavaPlugin {
 					if (args[0].equalsIgnoreCase("meteor")) {
 						spawnMeteor(p.getLocation());
 					}
-					else if (args[1].equalsIgnoreCase("items")) {
+					else if (args[0].equalsIgnoreCase("items")) {
 						Inventory inv = Bukkit.createInventory(null, 9, "Cheater :O");
 						inv.addItem(MagicItems.INFUSABLE_WAND);
 						inv.addItem(MagicItems.AIR_SHARD);
