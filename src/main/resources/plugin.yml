@@ -1,3 +1,12 @@
 name: InfusedSticks
 main: com.tenjava.entries.mrCookieSlime.t2.TenJava
 version: 1.0
+
+commands:
+  is-debug:
+    usage: /is-debug <meteor/items>
+    description: admin debug command
+permissions:
+  is.debug:
+    description: allows you to debug is
+    default: op

@@ -6,13 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Chest;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.FallingBlock;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.util.Vector;
 
 public class TenJava extends JavaPlugin {
 	
@@ -56,8 +65,8 @@ public class TenJava extends JavaPlugin {
 		
 		try {
 			setupLocalizations(
-					new String[] {"fail.wrongItems", "fail.no-combination"}, 
-					new String[] {"&4Your Wand did not accept your Items and exterminated these", "&cLooks like your Infusions dont combine with each other"}
+					new String[] {"fail.wrongItems", "fail.no-combination", "command.usage"}, 
+					new String[] {"&4Your Wand did not accept your Items and exterminated these", "&cLooks like your Infusions dont combine with each other", "&4&lUsage: /is-debug <meteor/items>"}
 			);
 		} catch (IOException e) {
 		}
@@ -201,6 +210,64 @@ public class TenJava extends JavaPlugin {
 		}
 	}
 	
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		if (sender instanceof Player) {
+			Player p = (Player) sender;
+			
+			if (cmd.getName().equalsIgnoreCase("is-debug") && p.hasPermission("is.debug")) {
+				if (args.length == 1) {
+					if (args[0].equalsIgnoreCase("meteor")) {
+						spawnMeteor(p.getLocation());
+					}
+					else if (args[1].equalsIgnoreCase("items")) {
+						Inventory inv = Bukkit.createInventory(null, 9, "Cheater :O");
+						inv.addItem(MagicItems.INFUSABLE_WAND);
+						inv.addItem(MagicItems.AIR_SHARD);
+						inv.addItem(MagicItems.EARTH_SHARD);
+						inv.addItem(MagicItems.FIRE_SHARD);
+						inv.addItem(MagicItems.FLUX_SHARD);
+						inv.addItem(MagicItems.WATER_SHARD);
+						inv.addItem(MagicItems.METAL_SHARD);
+						p.openInventory(inv);
+					}
+					else p.sendMessage(getTranslation("command.usage"));
+				}
+				else {
+					p.sendMessage(getTranslation("command.usage"));
+				}
+			}
+		}
+		
+		return true;
+	}
+	
 	public Random getRandomizer()		{		return this.random;		}
+	
+	@SuppressWarnings("deprecation")
+	public void spawnMeteor(Location base) {
+		base.getWorld().createExplosion(base, this.getRandomizer().nextInt(3) + 6);
+		
+		for (int i = 0; i < this.getConfig().getInt("meteor.blocks-per-meteor"); i++) {
+			FallingBlock block;
+			Location l = base.getBlock().getRelative(this.getRandomizer().nextInt(4) - this.getRandomizer().nextInt(8), this.getRandomizer().nextInt(2) - this.getRandomizer().nextInt(4), this.getRandomizer().nextInt(4) - this.getRandomizer().nextInt(8)).getLocation();
+			
+			if (this.getRandomizer().nextFloat() <=  this.getConfig().getDouble("meteor.quartz-chance")) {
+				block = l.getWorld().spawnFallingBlock(l, Material.QUARTZ_ORE, (byte) 0);
+			}
+			else {
+				block = l.getWorld().spawnFallingBlock(l, Material.NETHERRACK, (byte) 0);
+			}
+			block.setVelocity(new Vector(this.getRandomizer().nextInt(2) - this.getRandomizer().nextInt(4), 0, this.getRandomizer().nextInt(2) - this.getRandomizer().nextInt(4)).multiply(0.6));
+			if (this.getRandomizer().nextFloat() <=  0.99) l.getBlock().setType(Material.NETHERRACK);
+		}
+		
+		base.getBlock().setType(Material.CHEST);
+		Chest chest = (Chest) base.getBlock().getState();
+		ItemStack[] loot = new ItemStack[] {MagicItems.INFUSABLE_WAND, MagicItems.AIR_SHARD, MagicItems.EARTH_SHARD, MagicItems.FIRE_SHARD, MagicItems.FLUX_SHARD, MagicItems.METAL_SHARD, MagicItems.WATER_SHARD};
+		for (int i = 0; i < 1 + this.getRandomizer().nextInt(4); i++) {
+			chest.getInventory().addItem(loot[this.getRandomizer().nextInt(loot.length)]);
+		}
+	}
 
 }
