@@ -18,6 +18,8 @@ public class TenJava extends JavaPlugin {
 	
 	File localFile;
 	FileConfiguration localConfig;
+	
+	// 1 Global Random Instance to reduce Lag
 	Random random;
 	
 	/**
@@ -54,8 +56,8 @@ public class TenJava extends JavaPlugin {
 		
 		try {
 			setupLocalizations(
-					new String[] {"fail.wrongItems"}, 
-					new String[] {"&4Your Wand did not accept your Items and exterminated these"}
+					new String[] {"fail.wrongItems", "fail.no-combination"}, 
+					new String[] {"&4Your Wand did not accept your Items and exterminated these", "&cLooks like your Infusions dont combine with each other"}
 			);
 		} catch (IOException e) {
 		}
