@@ -1,0 +1,3 @@
+meteor:
+  blocks-per-meteor: 80
+  quartz-chance: 0.2

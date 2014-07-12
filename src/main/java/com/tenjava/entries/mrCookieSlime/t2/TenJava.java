@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -18,6 +19,7 @@ public class TenJava extends JavaPlugin {
 	
 	File localFile;
 	FileConfiguration localConfig;
+	Random random;
 	
 	/**
 	 * 	TenJava 2014 Submission by mrCookieSlime
@@ -38,7 +40,6 @@ public class TenJava extends JavaPlugin {
 	 * 		This Plugin adds Meteors which contain Crystal inside, combined
 	 * 		with a craftable Wand, some Crystal Combinations can have good/bad Effects
 	 * 
-	 *github test
 	 * 
 	 */
 	
@@ -47,6 +48,7 @@ public class TenJava extends JavaPlugin {
 		System.out.println("[InfusedSticks] InfusedSticks v" + getDescription().getVersion() + " has been enabled");
 		
 		this.loadConfig();
+		this.random = new Random();
 		
 		this.localFile = new File("plugins/" + getDescription().getName().replace(" ", "_") + "/messages.yml");
 		this.localConfig = YamlConfiguration.loadConfiguration(localFile);
@@ -61,6 +63,8 @@ public class TenJava extends JavaPlugin {
 		
 		this.loadItems();
 		this.setupRecipe();
+		
+		new MeteorSpawner(this);
 	}
 	
 	@Override
@@ -120,5 +124,7 @@ public class TenJava extends JavaPlugin {
 			getServer().addRecipe(r);
 		}
 	}
+	
+	public Random getRandomizer()		{		return this.random;		}
 
 }
