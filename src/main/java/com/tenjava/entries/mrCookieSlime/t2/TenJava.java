@@ -65,6 +65,7 @@ public class TenJava extends JavaPlugin {
 		this.setupRecipe();
 		
 		new MeteorSpawner(this);
+		new WandListener(this);
 	}
 	
 	@Override
@@ -105,6 +106,96 @@ public class TenJava extends JavaPlugin {
 			item.setItemMeta(im);
 			
 			MagicItems.INFUSABLE_WAND = item;
+		}
+		if (true) {
+			ItemStack item = new ItemStack(Material.FLINT);
+			item.setDurability((short) 17);
+			ItemMeta im = item.getItemMeta();
+			im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&aMeteor Shard - &9&oWater"));
+			List<String> lore = new ArrayList<String>();
+			lore.add("");
+			lore.add("Unearthly magical Power");
+			lore.add("flows through the Atoms of this");
+			lore.add("powerful Crystal. Maybe you can use it somehow");
+			im.setLore(lore);
+			item.setItemMeta(im);
+			
+			MagicItems.WATER_SHARD = item;
+		}
+		if (true) {
+			ItemStack item = new ItemStack(Material.FLINT);
+			item.setDurability((short) 18);
+			ItemMeta im = item.getItemMeta();
+			im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&aMeteor Shard - &4&oEarth"));
+			List<String> lore = new ArrayList<String>();
+			lore.add("");
+			lore.add("Unearthly magical Power");
+			lore.add("flows through the Atoms of this");
+			lore.add("powerful Crystal. Maybe you can use it somehow");
+			im.setLore(lore);
+			item.setItemMeta(im);
+			
+			MagicItems.EARTH_SHARD = item;
+		}
+		if (true) {
+			ItemStack item = new ItemStack(Material.FLINT);
+			item.setDurability((short) 19);
+			ItemMeta im = item.getItemMeta();
+			im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&aMeteor Shard - &b&oAir"));
+			List<String> lore = new ArrayList<String>();
+			lore.add("");
+			lore.add("Unearthly magical Power");
+			lore.add("flows through the Atoms of this");
+			lore.add("powerful Crystal. Maybe you can use it somehow");
+			im.setLore(lore);
+			item.setItemMeta(im);
+			
+			MagicItems.AIR_SHARD = item;
+		}
+		if (true) {
+			ItemStack item = new ItemStack(Material.FLINT);
+			item.setDurability((short) 20);
+			ItemMeta im = item.getItemMeta();
+			im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&aMeteor Shard - &c&oFire"));
+			List<String> lore = new ArrayList<String>();
+			lore.add("");
+			lore.add("Unearthly magical Power");
+			lore.add("flows through the Atoms of this");
+			lore.add("powerful Crystal. Maybe you can use it somehow");
+			im.setLore(lore);
+			item.setItemMeta(im);
+			
+			MagicItems.FIRE_SHARD = item;
+		}
+		if (true) {
+			ItemStack item = new ItemStack(Material.FLINT);
+			item.setDurability((short) 21);
+			ItemMeta im = item.getItemMeta();
+			im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&aMeteor Shard - &5&oFlux"));
+			List<String> lore = new ArrayList<String>();
+			lore.add("");
+			lore.add("Unearthly magical Power");
+			lore.add("flows through the Atoms of this");
+			lore.add("powerful Crystal. Maybe you can use it somehow");
+			im.setLore(lore);
+			item.setItemMeta(im);
+			
+			MagicItems.FLUX_SHARD = item;
+		}
+		if (true) {
+			ItemStack item = new ItemStack(Material.FLINT);
+			item.setDurability((short) 22);
+			ItemMeta im = item.getItemMeta();
+			im.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&aMeteor Shard - &7&oMetal"));
+			List<String> lore = new ArrayList<String>();
+			lore.add("");
+			lore.add("Unearthly magical Power");
+			lore.add("flows through the Atoms of this");
+			lore.add("powerful Crystal. Maybe you can use it somehow");
+			im.setLore(lore);
+			item.setItemMeta(im);
+			
+			MagicItems.METAL_SHARD = item;
 		}
 	}
 	
