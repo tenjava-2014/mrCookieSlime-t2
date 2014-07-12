@@ -11,7 +11,6 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -62,7 +61,6 @@ public class TenJava extends JavaPlugin {
 		}
 		
 		this.loadItems();
-		this.setupRecipe();
 		
 		new MeteorSpawner(this);
 		new WandListener(this);
@@ -70,7 +68,7 @@ public class TenJava extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-		System.out.println("tenJava v" + getDescription().getVersion() + " has been disabled");
+		System.out.println("InfusedSticks v" + getDescription().getVersion() + " has been disabled");
 	}
 	
 	public void setupLocalizations(String[] keys, String[] values) throws IOException {
@@ -198,23 +196,6 @@ public class TenJava extends JavaPlugin {
 			item.setItemMeta(im);
 			
 			MagicItems.METAL_SHARD = item;
-		}
-	}
-	
-	public void setupRecipe() {
-		if (true) {
-			ShapedRecipe r = new ShapedRecipe(MagicItems.INFUSABLE_WAND);
-			r.shape(new String[] {" ld", "ldl", " dl"});
-			r.setIngredient('l', Material.LOG);
-			r.setIngredient('d', Material.DIAMOND);
-			getServer().addRecipe(r);
-		}
-		if (true) {
-			ShapedRecipe r = new ShapedRecipe(MagicItems.INFUSABLE_WAND);
-			r.shape(new String[] {" ld", "ldl", " dl"});
-			r.setIngredient('l', Material.LOG_2);
-			r.setIngredient('d', Material.DIAMOND);
-			getServer().addRecipe(r);
 		}
 	}
 	

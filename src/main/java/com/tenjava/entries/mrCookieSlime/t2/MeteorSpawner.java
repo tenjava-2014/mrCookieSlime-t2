@@ -45,7 +45,7 @@ public class MeteorSpawner implements Listener {
 			
 			base.getBlock().setType(Material.CHEST);
 			Chest chest = (Chest) base.getBlock().getState();
-			ItemStack[] loot = new ItemStack[] {MagicItems.AIR_SHARD, MagicItems.EARTH_SHARD, MagicItems.FIRE_SHARD, MagicItems.FLUX_SHARD, MagicItems.METAL_SHARD, MagicItems.WATER_SHARD};
+			ItemStack[] loot = new ItemStack[] {MagicItems.INFUSABLE_WAND, MagicItems.AIR_SHARD, MagicItems.EARTH_SHARD, MagicItems.FIRE_SHARD, MagicItems.FLUX_SHARD, MagicItems.METAL_SHARD, MagicItems.WATER_SHARD};
 			for (int i = 0; i < 1 + new Random().nextInt(4); i++) {
 				chest.getInventory().addItem(loot[plugin.getRandomizer().nextInt(loot.length)]);
 			}
