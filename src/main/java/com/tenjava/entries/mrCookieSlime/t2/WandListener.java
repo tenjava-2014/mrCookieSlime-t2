@@ -55,7 +55,6 @@ public class WandListener implements Listener {
 						if (wand.getItemMeta().hasLore()) {
 							if (wand.getItemMeta().getLore().size() >= MagicItems.INFUSABLE_WAND.getItemMeta().getLore().size()) {
 								if (p.isSneaking()) {
-									
 									List<Infusion> infusions = new ArrayList<Infusion>();
 									
 									if (!wand.getItemMeta().getLore().get(5).equalsIgnoreCase(ChatColor.GRAY + "Infused with: Nothing")) {
@@ -89,44 +88,46 @@ public class WandListener implements Listener {
 										}
 									}
 									
-									boolean effecting = false;
+									List<InfusionSet> effecting = new ArrayList<InfusionSet>();
 									
 									for (InfusionSet effect: InfusionSet.values()) {
 										if (effect.isContainedin(infusions)) {
-											effecting = true;
-											switch(effect) {
-											case WHIRLWIND:
-												p.setVelocity(p.getEyeLocation().getDirection().multiply(4));
-												p.getWorld().playSound(p.getLocation(), Sound.FIZZ, 1, 1);
-												p.getWorld().playEffect(p.getLocation(), Effect.SMOKE, 1);
-												p.setFallDistance(0.0f);
-												break;
-											case CANNON:
-												p.launchProjectile(Arrow.class);
-												break;
-											case FIREBALL:
-												p.launchProjectile(Fireball.class);
-												break;
-											case ICEBALL:
-												Entity snowball = p.launchProjectile(Snowball.class);
-												this.infusedDamager.put(snowball.getUniqueId(), "ice");
-												break;
-											case SHURIKEN:
-												Entity shuriken = p.launchProjectile(Arrow.class);
-												this.infusedDamager.put(shuriken.getUniqueId(), "ninja");
-												break;
-											case EXTINGUISH:
-												p.setFireTicks(0);
-												break;
-											case ENDER_HAND:
-												p.launchProjectile(EnderPearl.class);
-												break;
-											default:
-												break;
-											}
+											effecting.add(effect);
 										}
 									}
-									if (!effecting) p.sendMessage(plugin.getTranslation("fail.no-combination"));
+									if (effecting.isEmpty()) p.sendMessage(plugin.getTranslation("fail.no-combination"));
+									else {
+										switch(effecting.get(plugin.getRandomizer().nextInt(effecting.size()))) {
+										case WHIRLWIND:
+											p.setVelocity(p.getEyeLocation().getDirection().multiply(4));
+											p.getWorld().playSound(p.getLocation(), Sound.FIZZ, 1, 1);
+											p.getWorld().playEffect(p.getLocation(), Effect.SMOKE, 1);
+											p.setFallDistance(0.0f);
+											break;
+										case CANNON:
+											p.launchProjectile(Arrow.class);
+											break;
+										case FIREBALL:
+											p.launchProjectile(Fireball.class);
+											break;
+										case ICEBALL:
+											Entity snowball = p.launchProjectile(Snowball.class);
+											this.infusedDamager.put(snowball.getUniqueId(), "ice");
+											break;
+										case SHURIKEN:
+											Entity shuriken = p.launchProjectile(Arrow.class);
+											this.infusedDamager.put(shuriken.getUniqueId(), "ninja");
+											break;
+										case EXTINGUISH:
+											p.setFireTicks(0);
+											break;
+										case ENDER_HAND:
+											p.launchProjectile(EnderPearl.class);
+											break;
+										default:
+											break;
+										}
+									}
 								}
 							}
 						}
