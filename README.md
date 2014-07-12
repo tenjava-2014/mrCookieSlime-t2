@@ -17,13 +17,13 @@ This is a submission for the 2014 ten.java contest.
 Description/Story
 -----------------
 
-	 * 		Meteors are coming down! But as you look inside you start
-	 * 		finding weird looking Crystals which contain unearthly
-	 * 		Energy...
-	 * 		As you experiment more and more with these you begin to
-	 * 		craft powerful Gadgets to use this unknown Energy.
-	 * 		It has a strange behaviour but you discover slowly but
-	 * 		surely how to use them for your advantage!
+	 		Meteors are coming down! But as you look inside you start
+	  		finding weird looking Crystals which contain unearthly
+	 		Energy...
+	  		As you experiment more and more with these you begin to
+	 		craft powerful Gadgets to use this unknown Energy.
+	  		It has a strange behaviour but you discover slowly but
+	  		surely how to use them for your advantage!
 
 ---------------------------------------
 
