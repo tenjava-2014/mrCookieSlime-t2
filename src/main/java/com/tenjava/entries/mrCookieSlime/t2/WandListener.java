@@ -114,6 +114,9 @@ public class WandListener implements Listener {
 												Entity shuriken = p.launchProjectile(Arrow.class);
 												this.infusedDamager.put(shuriken.getUniqueId(), "ninja");
 												break;
+											case EXTINGUISH:
+												p.setFireTicks(0);
+												break;
 											default:
 												break;
 											}
@@ -170,8 +173,8 @@ public class WandListener implements Listener {
 			String infused = "";
 			
 			for (int i = 0; i < infusions.size(); i++) {
-				if (i > 0) infused = infused + " &7& " + infusions.get(i).toDisplayName();
-				else infused = infusions.get(i).toDisplayName();
+				if (i > 0) infused = infused + " &7& " + infusions.get(i).getDisplayName();
+				else infused = infusions.get(i).getDisplayName();
 			}
 			
 			if (!infused.equalsIgnoreCase("")) {

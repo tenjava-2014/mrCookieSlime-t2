@@ -31,7 +31,7 @@ public enum Infusion {
 		}
 	}
 	
-	public String toDisplayName() {
+	public String getDisplayName() {
 		switch(this) {
 		case AIR:
 			return ChatColor.translateAlternateColorCodes('&', "&b&oAir");
