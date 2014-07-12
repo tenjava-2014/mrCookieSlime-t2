@@ -55,8 +55,8 @@ public class TenJava extends JavaPlugin {
 		
 		try {
 			setupLocalizations(
-					new String[] {}, 
-					new String[] {}
+					new String[] {"fail.wrongItems"}, 
+					new String[] {"&4Your Wand did not accept your Items and exterminated these"}
 			);
 		} catch (IOException e) {
 		}
@@ -82,7 +82,7 @@ public class TenJava extends JavaPlugin {
 	}
 	
 	public String getTranslation(String input) {
-		return String.valueOf(this.localConfig.get(input));
+		return ChatColor.translateAlternateColorCodes('&', "&6&l[InfusedSticks] &7" + String.valueOf(this.localConfig.get(input)));
 	}
 	
 	public void loadConfig() {
@@ -102,6 +102,8 @@ public class TenJava extends JavaPlugin {
 			lore.add("This powerful Gadget can be");
 			lore.add("infused with unearthly Energy");
 			lore.add("to show you its mighty Power");
+			lore.add("");
+			lore.add(ChatColor.GRAY + "Infused with: Nothing");
 			im.setLore(lore);
 			item.setItemMeta(im);
 			
@@ -202,14 +204,14 @@ public class TenJava extends JavaPlugin {
 	public void setupRecipe() {
 		if (true) {
 			ShapedRecipe r = new ShapedRecipe(MagicItems.INFUSABLE_WAND);
-			r.shape(new String[] {" ld", "ldl", "dl"});
+			r.shape(new String[] {" ld", "ldl", " dl"});
 			r.setIngredient('l', Material.LOG);
 			r.setIngredient('d', Material.DIAMOND);
 			getServer().addRecipe(r);
 		}
 		if (true) {
 			ShapedRecipe r = new ShapedRecipe(MagicItems.INFUSABLE_WAND);
-			r.shape(new String[] {" ld", "ldl", "dl"});
+			r.shape(new String[] {" ld", "ldl", " dl"});
 			r.setIngredient('l', Material.LOG_2);
 			r.setIngredient('d', Material.DIAMOND);
 			getServer().addRecipe(r);

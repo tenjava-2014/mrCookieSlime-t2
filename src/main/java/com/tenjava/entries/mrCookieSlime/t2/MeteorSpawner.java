@@ -31,7 +31,7 @@ public class MeteorSpawner implements Listener {
 			
 			for (int i = 0; i < this.plugin.getConfig().getInt("meteor.blocks-per-meteor"); i++) {
 				FallingBlock block;
-				Location l = base.getBlock().getRelative(new Random().nextInt(3) - new Random().nextInt(6), 0, new Random().nextInt(3) - new Random().nextInt(6)).getLocation();
+				Location l = base.getBlock().getRelative(new Random().nextInt(4) - new Random().nextInt(8), new Random().nextInt(2) - new Random().nextInt(4), new Random().nextInt(4) - new Random().nextInt(8)).getLocation();
 				
 				if (plugin.getRandomizer().nextFloat() <=  this.plugin.getConfig().getDouble("meteor.quartz-chance")) {
 					block = l.getWorld().spawnFallingBlock(l, Material.QUARTZ_ORE, (byte) 0);
@@ -40,7 +40,7 @@ public class MeteorSpawner implements Listener {
 					block = l.getWorld().spawnFallingBlock(l, Material.NETHERRACK, (byte) 0);
 				}
 				block.setVelocity(new Vector(new Random().nextInt(2) - new Random().nextInt(4), 0, new Random().nextInt(2) - new Random().nextInt(4)).multiply(0.6));
-				if (plugin.getRandomizer().nextFloat() <=  0.16) l.getBlock().setType(Material.NETHERRACK);
+				if (plugin.getRandomizer().nextFloat() <=  0.99) l.getBlock().setType(Material.NETHERRACK);
 			}
 			
 			base.getBlock().setType(Material.CHEST);
